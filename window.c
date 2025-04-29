@@ -3,10 +3,9 @@
 #include <getopt.h>
 #include <string.h>
 
-GLFWwindow *window;
-
-int init_window(int argc, char **argv)
+GLFWwindow *init_window(int argc, char **argv)
 {
+  GLFWwindow *win;
   int width = DEFAULT_WIDTH;
   int height = DEFAULT_HEIGHT;
   char title[255] = "cube";
@@ -27,27 +26,17 @@ int init_window(int argc, char **argv)
         resize = 1;
         break;
       default:
-        fprintf(stderr, "%s %d: ERROR: symbol not found\n", __FILE__, __LINE__);
-        return -1;
+        fprintf(stderr, "ERR: symbol not found\n");
+        return NULL;
     }
   }
   glfwWindowHint(GLFW_NO_API, GL_TRUE);
   glfwWindowHint(GLFW_FLOATING, GL_TRUE);
   glfwWindowHint(GLFW_RESIZABLE, resize);
-  window = glfwCreateWindow(width, height, title, NULL, NULL);
-  if (!window) {
-    fprintf(stderr, "%s %d: ERROR: window is not created\n", __FILE__, __LINE__);
-    return -1;
+  win = glfwCreateWindow(width, height, title, NULL, NULL);
+  if (!win) {
+    fprintf(stderr, "ERR: window is not created\n");
+    return NULL;
   } 
-  return 0;
-}
-
-GLFWwindow *get_window()
-{
-  return window;
-}
-
-void destroy_window()
-{
-  glfwDestroyWindow(window);
+  return win;
 }

@@ -1,9 +1,12 @@
-#include "vulkan.h"
-#include "vulkan_instance.h"
+#include "vulkan_local.h"
+
+VkInstance vkInstance;
+VkPhysicalDevice vkPDev;
+VkDevice vkDev;
 
 int init_vulkan(int argc, char **argv)
 {
-  int ret;
-  if ((ret = create_instance()) < 0)
-    return ret;
+  if (!(vkInstance = create_instance()))
+    return -1;
+  return 0;
 }

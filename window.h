@@ -7,10 +7,6 @@
 #define DEFAULT_WIDTH 800
 #define DEFAULT_HEIGHT 600
 
-int init_window(int argc, char **argv);
-
-GLFWwindow *get_window();
-
-void destroy_window();
+GLFWwindow *init_window(int argc, char **argv);
 
 #endif
