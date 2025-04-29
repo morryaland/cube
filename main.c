@@ -1,5 +1,5 @@
 #include "window.h"
-#include "vulkan.h"
+#include "vulkan_local.h"
 #include <stdio.h>
 #include <assert.h>
 #include <getopt.h>
@@ -21,11 +21,10 @@ int main(int argc, char **argv)
   }
 
   glfwInit();
-  assert(init_window(argc, argv) >= 0);
+  assert((g_window = init_window(argc, argv)));
   assert(init_vulkan(argc, argv) >= 0);
 
-  GLFWwindow *win = get_window();
-  for (;!glfwWindowShouldClose(win);) {
+  for (;!glfwWindowShouldClose(g_window);) {
     glfwPollEvents();
   }
   return 0;

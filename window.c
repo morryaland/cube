@@ -3,6 +3,9 @@
 #include <getopt.h>
 #include <string.h>
 
+GLFWwindow *g_window;
+VkSurfaceKHR g_surfase;
+
 GLFWwindow *init_window(int argc, char **argv)
 {
   GLFWwindow *win;
@@ -39,4 +42,14 @@ GLFWwindow *init_window(int argc, char **argv)
     return NULL;
   } 
   return win;
+}
+
+VkSurfaceKHR create_surfase()
+{
+  VkSurfaceKHR surfase;
+  if (glfwCreateWindowSurface(g_vkInstance, g_window, NULL, &surfase) != VK_SUCCESS) {
+    fprintf(stderr, "ERR: surface is not created\n");
+    return NULL;
+  }
+  return surfase;
 }
