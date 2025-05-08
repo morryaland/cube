@@ -6,6 +6,6 @@
 #define DEFAULT_WIDTH 800
 #define DEFAULT_HEIGHT 600
 
-GLFWwindow *init_window(int width, int height, int resize, char title[255], int use_api);
+GLFWwindow *init_window(int width, int height, int resize, char title[255]);
 
 #endif

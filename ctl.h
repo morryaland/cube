@@ -2,8 +2,7 @@
 #define __CTL_H__
 
 #define CTLZERO_MODE 1
-#define CTLVULKAN 2
-#define CTLRESIZE 4
+#define CTLRESIZE 2
 
 typedef struct {
   unsigned int flags;

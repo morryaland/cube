@@ -3,17 +3,15 @@
 #include <getopt.h>
 #include <string.h>
 
-GLFWwindow *init_window(int width, int height, int resize, char title[255], int use_api)
+GLFWwindow *init_window(int width, int height, int resize, char title[255])
 {
   GLFWwindow *win;
   if (!width)
     width = DEFAULT_WIDTH;
   if (!height)
     height = DEFAULT_HEIGHT;
-  if (!title)
+  if (!*title)
     title = "cube";
-  if (!use_api)
-    glfwWindowHint(GLFW_NO_API, GL_TRUE);
   glfwWindowHint(GLFW_FLOATING, GL_TRUE);
   glfwWindowHint(GLFW_RESIZABLE, resize);
   win = glfwCreateWindow(width, height, title, NULL, NULL);
